@@ -1,0 +1,12 @@
+syntax = "proto3";
+package lctech.configuration;
+
+option csharp_namespace = "Lctech.Configuration.Protobufs.HelloWorld";
+
+message GetWorldRequest {
+  string world = 1;
+}
+
+message GetWorldResult {
+  string world = 1;
+}
