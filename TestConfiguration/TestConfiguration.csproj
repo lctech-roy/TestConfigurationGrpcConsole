@@ -17,14 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="Protos\HelloWorld\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
-        <Protobuf Include="Protos\HelloWorld\Queries\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Queries\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
     </ItemGroup>
-
-<!--    <ItemGroup>-->
-<!--      <None Remove="Protos\HelloWorld\helloworld.proto" />-->
-<!--      <Protobuf Include="Protos\HelloWorld\helloworld.proto" />-->
-<!--      <None Remove="Protos\HelloWorld\Queries\get-world.proto" />-->
-<!--      <Protobuf Include="Protos\HelloWorld\Queries\get-world.proto" />-->
-<!--    </ItemGroup>-->
+    
 </Project>
