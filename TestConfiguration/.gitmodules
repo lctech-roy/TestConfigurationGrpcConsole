@@ -1,0 +1,3 @@
+[submodule "Protos/Configuration"]
+	path = Protos/Configuration
+	url = https://github.com/lctech-tw/Lctech.Configuration.Protos.git

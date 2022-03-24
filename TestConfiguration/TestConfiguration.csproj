@@ -14,11 +14,13 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Mapster" Version="7.3.0" />
+      <PackageReference Include="Netcorext.EntityFramework.UserIdentityPattern.AspNetCore" Version="1.0.0-dev-62287f5" />
     </ItemGroup>
 
     <ItemGroup>
         <Protobuf Include="Protos\Configuration\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
         <Protobuf Include="Protos\Configuration\Queries\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
     </ItemGroup>
-    
+
 </Project>
