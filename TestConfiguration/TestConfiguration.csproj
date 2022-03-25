@@ -21,6 +21,8 @@
     <ItemGroup>
         <Protobuf Include="Protos\Configuration\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
         <Protobuf Include="Protos\Configuration\Queries\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Commands\insert-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Commands\update-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
     </ItemGroup>
 
 </Project>
