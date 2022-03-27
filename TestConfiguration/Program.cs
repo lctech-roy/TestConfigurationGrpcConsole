@@ -8,12 +8,11 @@ using var channel = GrpcChannel.ForAddress("http://localhost:8080");
 var client = new ConfigurationService.ConfigurationServiceClient(channel);
 
 //查詢
-
 // var reply = await client.GetConfigurationsAsync(
 //     new GetConfigurationRequest() { Group = "emoji", Level = 2});
 //
 // var config = new TypeAdapterConfig();
-//
+
 // config.NewConfig<ProtobufsConfiguration, EntitiesConfiguration>()
 //     .Map(dest => dest.CreationDate, src => src.CreationDate.ToDateTimeOffset())
 //     .Map(dest => dest.ModificationDate, src => src.ModificationDate.ToDateTimeOffset())
@@ -29,39 +28,56 @@ var client = new ConfigurationService.ConfigurationServiceClient(channel);
 //     Group = "testGroup",
 //     Source = "testSource",
 //     Value = "testValue_3",
-//     ParentId = 180820643338518528
+//     Key = "testGroup1"
+//     // ParentId = 180820643338518528
 // });
 // insertConfigurations.Add(new InsertConfiguration()
 // {
 //     Group = "testGroup",
 //     Source = "testSource",
 //     Value = "testValue_4",
-//     ParentId = 180820643338518528
+//     Key = "testGroup2"
+//     // ParentId = 180820643338518528
 // });
 //
 // var reply = await client.InsertConfigurationsAsync(
 //     new InsertConfigurationRequest() { Configurations = { insertConfigurations }});
 
 //修改
-var updateConfigurations = new List<UpdateConfiguration>();
-updateConfigurations.Add(new UpdateConfiguration()
-{
-    Id = 180848843905040384,
-    Value = "testValue_4_update",
-    SortingIndex = 4,
-    ModifierId = 4,
-});
-updateConfigurations.Add(new UpdateConfiguration()
-{
-    Key = "test_5",
-    Value = "testValue_5_update",
-    SortingIndex = 5,
-    ModifierId = 5,
-});
+ // var updateConfigurations = new List<UpdateConfiguration>();
+ // updateConfigurations.Add(new UpdateConfiguration()
+ // {
+ //     Id = 181438991059386368,
+ //     Value = "testValue_4_updates",
+ //     SortingIndex = 123,
+ //     ModifierId = 122,
+ // });
+ // updateConfigurations.Add(new UpdateConfiguration()
+ // {
+ //     Key = "testGroup2",
+ //     Value = "testValue_5_updates",
+ //     SortingIndex = 123,
+ //     ModifierId = 122,
+ // });
+ //
+ // var reply = await client.UpdateConfigurationsAsync(
+ //     new UpdateConfigurationRequest() { Configurations = { updateConfigurations }});
 
-var reply = await client.UpdateConfigurationsAsync(
-    new UpdateConfigurationRequest() { Configurations = { updateConfigurations }});
 
+//刪除
+var deleteConfigurations = new List<DeleteConfiguration>();
+deleteConfigurations.Add(new DeleteConfiguration()
+{
+    Key = "emoji_6",
+    IncludeChildren = true
+});
+// deleteConfigurations.Add(new DeleteConfiguration()
+// {
+//     Key = "testGroup2",
+// });
+
+var reply = await client.DeleteConfigurationsAsync(
+    new DeleteConfigurationRequest() { Configurations = { deleteConfigurations }});
 
 Console.WriteLine("Greeting: " );
 Console.WriteLine("Press any key to exit...");
