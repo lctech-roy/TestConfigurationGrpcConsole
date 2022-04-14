@@ -19,11 +19,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="Protos\Lctech.Configuration.Protos\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
-        <Protobuf Include="Protos\Lctech.Configuration.Protos\Queries\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
-        <Protobuf Include="Protos\Lctech.Configuration.Protos\Commands\insert-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
-        <Protobuf Include="Protos\Lctech.Configuration.Protos\Commands\update-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
-        <Protobuf Include="Protos\Lctech.Configuration.Protos\Commands\delete-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Queries\*.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Commands\insert-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Commands\update-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
+        <Protobuf Include="Protos\Configuration\Commands\delete-configuration.proto" GrpcServices="Client" ProtoRoot="Protos" />
     </ItemGroup>
 
 </Project>

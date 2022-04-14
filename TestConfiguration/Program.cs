@@ -2,23 +2,23 @@
 using Lctech.Configuration.Protobufs.Configuration;
 using Mapster;
 using EntitiesConfiguration = Lctech.Configuration.Domain.Entities.Configuration;
-using ProtobufsConfiguration = Lctech.Configuration.Protobufs.Configuration.QueryConfigurationResult.Types.Configuration;
+using ProtobufsConfiguration = Lctech.Configuration.Protobufs.Configuration.Configuration;
 
 using var channel = GrpcChannel.ForAddress("http://localhost:8080");
 var client = new ConfigurationService.ConfigurationServiceClient(channel);
 
 //查詢
- var reply = await client.QueryConfigurationsAsync(
-     new QueryConfigurationRequest() { Group = "forumFaq", Level = 2});
+// var reply = await client.GetConfigurationsAsync(
+//     new GetConfigurationRequest() { Group = "emoji", Level = 2});
+//
+// var config = new TypeAdapterConfig();
 
- var config = new TypeAdapterConfig();
+// config.NewConfig<ProtobufsConfiguration, EntitiesConfiguration>()
+//     .Map(dest => dest.CreationDate, src => src.CreationDate.ToDateTimeOffset())
+//     .Map(dest => dest.ModificationDate, src => src.ModificationDate.ToDateTimeOffset())
+//     .Compile();
 
- config.NewConfig<ProtobufsConfiguration, EntitiesConfiguration>()
-     .Map(dest => dest.CreationDate, src => src.CreationDate.ToDateTimeOffset())
-     .Map(dest => dest.ModificationDate, src => src.ModificationDate.ToDateTimeOffset())
-     .Compile();
-
- var configurations = reply.Content.Adapt<List<EntitiesConfiguration>>(config);
+// var configurations = reply.Configurations.Adapt<List<EntitiesConfiguration>>(config);
 
 //新增
 
@@ -44,40 +44,40 @@ var client = new ConfigurationService.ConfigurationServiceClient(channel);
 //     new InsertConfigurationRequest() { Configurations = { insertConfigurations }});
 
 //修改
-  // var updateConfigurations = new List<UpdateConfiguration>();
-  // updateConfigurations.Add(new UpdateConfiguration()
-  // {
-  //     Id = 183417611147542528,
-  //     Value = "testValue_4_updatess",
-  //     SortingIndex = 123,
-  //     ModifierId = 122,
-  // });
-  // updateConfigurations.Add(new UpdateConfiguration()
-  // {
-  //     Key = "testGroup2",
-  //     Value = "testValue_5_updatess",
-  //     SortingIndex = 123,
-  //     ModifierId = 122,
-  // });
-
-  // var reply = await client.UpdateConfigurationsAsync(
-  //     new UpdateConfigurationRequest() { Configurations = { updateConfigurations }});
+ // var updateConfigurations = new List<UpdateConfiguration>();
+ // updateConfigurations.Add(new UpdateConfiguration()
+ // {
+ //     Id = 181438991059386368,
+ //     Value = "testValue_4_updates",
+ //     SortingIndex = 123,
+ //     ModifierId = 122,
+ // });
+ // updateConfigurations.Add(new UpdateConfiguration()
+ // {
+ //     Key = "testGroup2",
+ //     Value = "testValue_5_updates",
+ //     SortingIndex = 123,
+ //     ModifierId = 122,
+ // });
+ //
+ // var reply = await client.UpdateConfigurationsAsync(
+ //     new UpdateConfigurationRequest() { Configurations = { updateConfigurations }});
 
 
 //刪除
-// var deleteConfigurations = new List<DeleteConfiguration>();
-// deleteConfigurations.Add(new DeleteConfiguration()
-// {
-//     Key = "emoji_6",
-//     IncludeChildren = true
-// });
+var deleteConfigurations = new List<DeleteConfiguration>();
+deleteConfigurations.Add(new DeleteConfiguration()
+{
+    Key = "emoji_6",
+    IncludeChildren = true
+});
 // deleteConfigurations.Add(new DeleteConfiguration()
 // {
 //     Key = "testGroup2",
 // });
 
-// var reply = await client.DeleteConfigurationsAsync(
-//     new DeleteConfigurationRequest() { Configurations = { deleteConfigurations }});
+var reply = await client.DeleteConfigurationsAsync(
+    new DeleteConfigurationRequest() { Configurations = { deleteConfigurations }});
 
 Console.WriteLine("Greeting: " );
 Console.WriteLine("Press any key to exit...");
